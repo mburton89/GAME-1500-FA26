@@ -36,5 +36,6 @@ public class Bird : MonoBehaviour
     void Lose()
     {
         hurtSound.Play();
+        GameManager.Instance.GameOver();
     }
 }
