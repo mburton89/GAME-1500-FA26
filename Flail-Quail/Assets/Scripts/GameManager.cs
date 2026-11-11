@@ -29,8 +29,22 @@ public class GameManager : MonoBehaviour
     { 
         gameOverMenuOverlay.SetActive(true);
         //TODO Check for new high score
+
+        int currentBestScore = PlayerPrefs.GetInt("BestScore", 0);
+
+        if (score > currentBestScore)
+        {
+            //Hooray, new high score!
+            PlayerPrefs.SetInt("BestScore", score);
+            bestScoreText.SetText("New Best Score: " + PlayerPrefs.GetInt("BestScore", 0));
+        }
+        else 
+        {
+            bestScoreText.SetText("Best Score: " + PlayerPrefs.GetInt("BestScore", 0));
+        }
+
         Time.timeScale = 0;
-    }
+    } 
 
     public void Restart()
     {
